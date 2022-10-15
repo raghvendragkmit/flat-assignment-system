@@ -1,3 +1,9 @@
+//const mysql = require("mysql")
+//const dotenv = require('dotenv')
+const bcrypt = require("bcrypt");
+//dotenv.config();
+const db=require('../connection')
+
 exports.login =  (req,res)=>
 {
     let email = req.body.email;
@@ -7,13 +13,13 @@ exports.login =  (req,res)=>
 
 
     if(email=='' || password== ''){
-        res.status(400).json({
+       return  res.status(400).json({
             message:"please enter email and password"
         })}
 
         db.query("select password from user where email = ?",[email],(err,result)=>{
             if(err){
-                res.status(500).json({
+              return res.status(500).json({
                     error:'internal server error'
                 });
             }
@@ -23,11 +29,11 @@ exports.login =  (req,res)=>
             
             let validate_password = bcrypt.compareSync(password,result[0].password);
             if(validate_password){
-                res.status(200).json({
+               return  res.status(200).json({
                     message:"Login successfully"
                 });}      
             else{
-                    res.status(401).json({message : "incorrect email and password please signup"});}
+                    return res.status(401).json({message : "incorrect email and password please signup"});}
             
         });
 }
