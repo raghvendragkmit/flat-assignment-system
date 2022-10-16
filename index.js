@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const isSignedIn=require('./middleware/IsSignedIn')
+const isAdmin=require("./middleware/IsAdmin")
 //const mysql = require("mysql")
 //const dotenv = require('dotenv')
 const authRouter = require('./routes/Auth');
-const db=require('./connection')
+const db=require('./connection');
 
 // dotenv.config();
 
@@ -37,7 +38,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/auth",authRouter);
-app.get("/auth/testroute",isSignedIn,(req,res)=>{
+app.get("/auth/testroute",isSignedIn,isAdmin,(req,res)=>{
    return  res.json({
         message:"test passed"
     })

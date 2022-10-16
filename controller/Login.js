@@ -1,7 +1,4 @@
-//const mysql = require("mysql")
-//const dotenv = require('dotenv')
 const bcrypt = require("bcrypt");
-//dotenv.config();
 const db=require('../connection')
 const jwt=require('jsonwebtoken')
 
@@ -9,10 +6,7 @@ exports.login =  (req,res)=>
 {
     let email = req.body.email;
     let password = req.body.password;
-
-
-
-
+    
     if(email=='' || password== ''){
        return  res.status(400).json({
             message:"please enter email and password"
@@ -25,10 +19,11 @@ exports.login =  (req,res)=>
                 });
             }
 
-            if(result.length ==0)
+            if(result.length == 0)
                 return res.status(409).json({message :"Please signup"});
             
             let validate_password = bcrypt.compareSync(password,result[0].password);
+
             if(validate_password){
                 const token=jwt.sign(result[0].id,process.env.SECRET)
                 res.cookie("token",token,{expire:new Date()+100000})
