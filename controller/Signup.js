@@ -9,11 +9,13 @@ exports.signup=(req,res)=>{
     let lastName = req.body.lastName;
     let email = req.body.email;
     let password = req.body.password;
+    let userType=req.body.userType;
+    let contactNo=req.body.contactNo;
+    let companyName=req.body.companyName;
+    //console.log(firstName,lastName,email,password);
 
-    console.log(firstName,lastName,email,password);
-
-    if(firstName=='' || lastName=='' || email=='' || password== ''){
-    res.status(401).json({
+    if(firstName=='' || lastName=='' || email=='' || password== '' || userType== '' || contactNo== '' || companyName== ''){
+    return res.status(401).json({
         message:"please enter all required  details"
     })}
 
@@ -22,7 +24,7 @@ exports.signup=(req,res)=>{
 
     //let salt =  bcrypt.genSalt('10');
     let hash_password = bcrypt.hashSync(password,10);
-    db.query("insert into user(firstname,lastname,email,password) values(?,?,?,?)",[firstName,lastName,email,hash_password],(err,result)=>
+    db.query("insert into user(firstName,lastName,email,password,userType,contactNo,companyName) values(?,?,?,?,?,?,?)",[firstName,lastName,email,hash_password,userType,contactNo,companyName],(err,result)=>
     {
         if(err)
         {

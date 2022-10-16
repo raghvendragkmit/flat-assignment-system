@@ -1,6 +1,10 @@
 const express = require('express');
-const mysql = require("mysql")
-const dotenv = require('dotenv')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const isSignedIn=require('./middleware/IsSignedIn')
+//const mysql = require("mysql")
+//const dotenv = require('dotenv')
 const authRouter = require('./routes/Auth');
 const db=require('./connection')
 
@@ -29,7 +33,15 @@ db.connect((error) => {
 
 const app = express();
 app.use(express.json()); //server can read json
+app.use(cors());
+app.use(bodyParser.json());
+app.use(cookieParser());
 app.use("/auth",authRouter);
+app.get("/auth/testroute",isSignedIn,(req,res)=>{
+   return  res.json({
+        message:"test passed"
+    })
+})
 
 
 // let salt_value = 6
