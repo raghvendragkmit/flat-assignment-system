@@ -33,8 +33,8 @@ app.use(express.json()); //server can read json
 app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use("/auth",authRouter);
-app.get("/auth/testroute",isSignedIn,isAdmin,(req,res)=>{
+app.use("/api",authRouter);
+app.get("/api/testroute",isSignedIn,isAdmin,(req,res)=>{
    return  res.json({
         message:"test passed"
     })
