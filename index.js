@@ -8,7 +8,7 @@ const isAdmin=require("./middleware/IsAdmin")
 //const dotenv = require('dotenv')
 const authRouter = require('./routes/Auth');
 const db=require('./connection');
-
+const flatRouter = require("./routes/Flat");
 // dotenv.config();
 
 
@@ -43,6 +43,10 @@ app.get("/auth/testroute",isSignedIn,isAdmin,(req,res)=>{
         message:"test passed"
     })
 })
+
+
+
+app.use("/api",flatRouter);
 
 
 // let salt_value = 6
