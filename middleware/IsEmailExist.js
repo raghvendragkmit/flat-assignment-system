@@ -1,6 +1,4 @@
-//const mysql = require("mysql")
-//const dotenv = require('dotenv')
-//dotenv.config();
+
 const db=require('../connection')
 
 exports.isEmailExist = (req,res,next) =>{

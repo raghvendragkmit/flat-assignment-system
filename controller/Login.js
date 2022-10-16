@@ -12,7 +12,7 @@ exports.login =  (req,res)=>
             message:"please enter email and password"
         })}
 
-        db.query("select password,id from user where email = ?",[email],(err,result)=>{
+        db.query("select * from user where email = ?",[email],(err,result)=>{
             if(err){
               return res.status(500).json({
                     error:'internal server error'

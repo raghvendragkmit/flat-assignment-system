@@ -1,4 +1,4 @@
-const isSignedIn = require("./IsSignedIn");
+
 const db = require("../connection");
 const isAdmin = (req,res,next)=>
 {

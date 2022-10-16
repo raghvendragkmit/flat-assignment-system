@@ -1,7 +1,5 @@
 const bcrypt = require("bcrypt");
-//const mysql = require("mysql")
-//const dotenv = require('dotenv')
-//dotenv.config();
+
 
 const db=require('../connection')
 exports.signup=(req,res)=>{
