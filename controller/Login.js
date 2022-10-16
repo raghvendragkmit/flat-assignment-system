@@ -2,10 +2,7 @@ exports.login =  (req,res)=>
 {
     let email = req.body.email;
     let password = req.body.password;
-
-
-
-
+    
     if(email=='' || password== ''){
         res.status(400).json({
             message:"please enter email and password"
