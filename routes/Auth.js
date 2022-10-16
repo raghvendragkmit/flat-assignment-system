@@ -6,8 +6,6 @@ const {isEmailExist}=require("../middleware/IsEmailExist");
 
 
 router.post("/signup",isEmailExist,signup);
-
-router.post("/login",login);
-
+router.post("/login", login);
 
 module.exports = router;
