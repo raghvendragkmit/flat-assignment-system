@@ -2,11 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const isSignedIn=require('./middleware/IsSignedIn')
-const isAdmin=require("./middleware/IsAdmin")
+
 const authRouter = require('./routes/Auth');
 const db=require('./connection');
 const flatRouter = require("./routes/Flat");
+const flatAssignmentRouter = require("./routes/FlatAssignment");
 // dotenv.config();
 
 
@@ -34,15 +34,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api",authRouter);
-app.get("/api/testroute",isSignedIn,isAdmin,(req,res)=>{
-   return  res.json({
-        message:"test passed"
-    })
-})
+
 
 
 
 app.use("/api",flatRouter);
+app.use("/api",flatAssignmentRouter);
 
 
 // let salt_value = 6

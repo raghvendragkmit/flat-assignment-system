@@ -1,6 +1,6 @@
 
 const db = require("../connection");
-const isAdmin = (req,res,next)=>
+exports.isAdmin = (req,res,next)=>
 {
     let id = req.auth;
     db.query("select userType from User where id = ?",[id],(err,result)=>
@@ -11,5 +11,3 @@ const isAdmin = (req,res,next)=>
         return res.status(403).json({message:"Admin access required"})
     });
 }
-
-module.exports = isAdmin;
