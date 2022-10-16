@@ -4,23 +4,8 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const isSignedIn=require('./middleware/IsSignedIn')
 const isAdmin=require("./middleware/IsAdmin")
-//const mysql = require("mysql")
-//const dotenv = require('dotenv')
 const authRouter = require('./routes/Auth');
 const db=require('./connection');
-
-// dotenv.config();
-
-
-// //Creating database connection with mysql
-// const db = mysql.createConnection({
-//     host: process.env.DATABASE_HOST,
-//     user: process.env.DATABASE_ROOT,
-//     password: process.env.DATABASE_PASSWORD,
-//     database: process.env.DATABASE,
-//     port:process.env.DATABASE_PORT
-// });
-
 
 db.connect((error) => {
     if(error) {
@@ -29,8 +14,6 @@ db.connect((error) => {
         console.log("MySQL connected!")
     }
 })
-
-
 
 const app = express();
 app.use(express.json()); //server can read json
