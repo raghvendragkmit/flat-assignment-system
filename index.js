@@ -6,6 +6,19 @@ const isSignedIn=require('./middleware/IsSignedIn')
 const isAdmin=require("./middleware/IsAdmin")
 const authRouter = require('./routes/Auth');
 const db=require('./connection');
+const flatRouter = require("./routes/Flat");
+// dotenv.config();
+
+
+// //Creating database connection with mysql
+// const db = mysql.createConnection({
+//     host: process.env.DATABASE_HOST,
+//     user: process.env.DATABASE_ROOT,
+//     password: process.env.DATABASE_PASSWORD,
+//     database: process.env.DATABASE,
+//     port:process.env.DATABASE_PORT
+// });
+
 
 db.connect((error) => {
     if(error) {
@@ -26,6 +39,10 @@ app.get("/auth/testroute",isSignedIn,isAdmin,(req,res)=>{
         message:"test passed"
     })
 })
+
+
+
+app.use("/api",flatRouter);
 
 
 // let salt_value = 6
