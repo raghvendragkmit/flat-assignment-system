@@ -7,17 +7,8 @@ const authRouter = require('./routes/Auth');
 const db=require('./connection');
 const flatRouter = require("./routes/Flat");
 const flatAssignmentRouter = require("./routes/FlatAssignment");
-// dotenv.config();
+const userRouter = require("./routes/User");
 
-
-// //Creating database connection with mysql
-// const db = mysql.createConnection({
-//     host: process.env.DATABASE_HOST,
-//     user: process.env.DATABASE_ROOT,
-//     password: process.env.DATABASE_PASSWORD,
-//     database: process.env.DATABASE,
-//     port:process.env.DATABASE_PORT
-// });
 
 
 db.connect((error) => {
@@ -40,33 +31,7 @@ app.use("/api",authRouter);
 
 app.use("/api",flatRouter);
 app.use("/api",flatAssignmentRouter);
-
-
-// let salt_value = 6
-
-
-
-
-
-// app.get("/api/users",(req,res)=>
-// {
-//     let query = "select * from User";
-//    let q =  db.query(query,(err,result)=>
-//     {
-//         if(err) 
-//         {
-//             res.status(404).json({
-//                 "message" : "please check the url first"}
-//             )
-//         }
-//         res.status(200).json(result);
-//     })
-// })
-
-
-
-
-
+app.use("/api",userRouter);
 
 const port = process.env.PORT || 3020;
 app.listen(port,()=>
