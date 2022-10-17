@@ -8,7 +8,7 @@ exports.getAllFlats = (req,res)=>
 
     if(id==null)
     {
-        console.log("hello");
+        //console.log("hello");
         db.query("select * from Flat",(err,result)=>
         {
             if(err){
@@ -19,7 +19,7 @@ exports.getAllFlats = (req,res)=>
     }
     else
     {
-        console.log("world");
+       // console.log("world");
         db.query("select * from Flat where id=?",[id],(err,result)=>
         {
             if(err){
