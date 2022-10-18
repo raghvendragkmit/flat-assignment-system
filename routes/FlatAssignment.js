@@ -9,9 +9,10 @@ const { changeAssignmentStatus } = require("../middleware/ChangeAssignmentStatus
 const { getFlatAssignment } = require("../controller/GetFlatAssignment");
 const { deleteFlatAssignment } = require("../controller/DeleteFlatAssignment");
 const { updateFlatAssignment } = require("../controller/UpdateFlatAssignment");
-const {changeAssignmentStatusToEmpty}=require("../middleware/ChangeAssignmentStatusToEmpty")
+const {changeAssignmentStatusToEmpty}=require("../middleware/ChangeAssignmentStatusToEmpty");
 router.post("/flatassignment",isSignedIn,isAdmin,isFlatExist,isUserExist,changeAssignmentStatus,createFlatAssignment);
 router.get("/flatassignment",isSignedIn,isAdmin,getFlatAssignment);
 router.put("/flatassignment",isSignedIn,isAdmin,isUserExist,isFlatExist,changeAssignmentStatus,changeAssignmentStatusToEmpty,updateFlatAssignment);
 router.delete("/flatassignment",isSignedIn,isAdmin,changeAssignmentStatusToEmpty,deleteFlatAssignment);
 module.exports = router;
+

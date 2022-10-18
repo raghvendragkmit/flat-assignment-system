@@ -20,7 +20,7 @@ exports.login =  (req,res)=>
             }
 
             if(result.length == 0)
-                return res.status(409).json({message :"Please signup"});
+                return res.status(409).json({message :"email address is not registered yet"});
             
             let validate_password = bcrypt.compareSync(password,result[0].password);
 

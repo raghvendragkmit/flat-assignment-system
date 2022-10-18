@@ -22,8 +22,8 @@ db.connect((error) => {
 const app = express();
 app.use(express.json()); //server can read json
 app.use(cors());
-app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use("/api",authRouter);
 
 
@@ -38,3 +38,5 @@ app.listen(port,()=>
 {
     console.log(`Port is listening at ${process.env.PORT}`);
 });
+
+
