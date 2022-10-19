@@ -33,8 +33,9 @@ app.use("/api",flatRouter);
 app.use("/api",flatAssignmentRouter);
 app.use("/api",userRouter);
 
-const port = process.env.PORT || 3020;
-app.listen(port,()=>
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
+app.listen(PORT,HOST,()=>
 {
     console.log(`Port is listening at ${process.env.PORT}`);
 });
