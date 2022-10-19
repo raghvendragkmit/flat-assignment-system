@@ -22,7 +22,7 @@ exports.signup=(req,res)=>{
 
     //let salt =  bcrypt.genSalt('10');
     let hash_password = bcrypt.hashSync(password,10);
-    db.query("insert into user(firstName,lastName,email,password,userType,contactNo,companyName) values(?,?,?,?,?,?,?)",[firstName,lastName,email,hash_password,userType,contactNo,companyName],(err,result)=>
+    db.query("insert into User(firstName,lastName,email,password,userType,contactNo,companyName) values(?,?,?,?,?,?,?)",[firstName,lastName,email,hash_password,userType,contactNo,companyName],(err,result)=>
     {
         if(err)
         {

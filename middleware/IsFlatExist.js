@@ -1,10 +1,9 @@
-const { emit } = require("../connection");
 const db = require("../connection");
 
 exports.isFlatExist = (req,res,next)=>
 {
     let id = req.body.flatId;
-    db.query("select assignmentStatus from flat where id=?",[id],(err,result)=>
+    db.query("select assignmentStatus from Flat where id=?",[id],(err,result)=>
     {
         if(err) 
         return res.status(503).json({message : "Please try after sometime"});

@@ -5,14 +5,14 @@ exports.getAllUsers = (req,res)=>
 {
     let id=req.query.id;
     if(id == null){
-        db.query("select * from user",(err,result)=>
+        db.query("select * from User",(err,result)=>
     {
         if(err)
         return res.status(503).json({message : "Please try after sometime"});
         return res.status(200).json(result);
     });
 }else{
-    db.query("select * from user where id=?",[id],(err,result)=>
+    db.query("select * from User where id=?",[id],(err,result)=>
     {
         if(err)
             return res.status(503).json({message : "Please try after sometime"});
