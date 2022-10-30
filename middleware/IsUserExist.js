@@ -3,7 +3,7 @@ const db = require("../connection");
 exports.isUserExist = (req,res,next)=>
 {
     let id = req.body.userId;
-    db.query("select * from user where id=?",[id],(err,result)=>
+    db.query("select * from User where id=?",[id],(err,result)=>
     {
         if(err) 
         return res.status(503).json({message : "Please try after sometime"});
